@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import "../app.css";
 
 type Props={
     question:string;
@@ -16,18 +17,22 @@ const QuestionCard : FC<Props>=({question,answers,callback,userAnswer,questionNr
     <p className='number'>
     Question: {questionNr} / {totalQuestions}
   </p>
+  <div className='question-answer-divide'>
+<div className='question'>
   <p dangerouslySetInnerHTML={{ __html: question }} />
-  <div>
+</div>
+  <div className='answer'>
     {
         answers.map((answer)=>
-        (
-            <div key={answer}>
-                <button disabled={userAnswer?true:false} onClick={callback} value={answer}>
+            (
+                <div key={answer} >
+                <button className='answer-btn' disabled={userAnswer?true:false} onClick={callback} value={answer}>
                     <span dangerouslySetInnerHTML={{__html:answer}}></span>
                 </button>
                 </div>
         ))
     }
+    </div>
   </div>
     </>
   )

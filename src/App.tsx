@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import QuestionCard from './components/QuestionCard';
 import { QuestionsState, fetchQuestions } from './API';
-
-
+import "./app.css"
 
 const TOTAL_QUESTIONS = 10;
 
@@ -56,19 +55,20 @@ const App: React.FC = () => {
   if(nextQuestion===10)
     {
       setGameOver(true);
+      setLoading(false);
     }
     setNumber(nextQuestion);
  }
   return (
     <div className="App">
-    <h1>React Quiz</h1>
+    <h1 className='heading'>Itzzzz Quiz Time</h1>
     {
-      gameOver?(<button onClick={startTrivia} className='start'>
+      gameOver?(<button onClick={startTrivia} className='btn btn-light start'>
       start
     </button>): null
     }
     {
-      gameOver && !loading &&  <p className='score'>Score:{score}</p>
+      gameOver && !loading &&  <p className='score btn btn-light'>Score: {score}</p>
     }
    
     {
@@ -88,7 +88,7 @@ const App: React.FC = () => {
       )
     }
    {
-    !gameOver &&   <button onClick={nextQuestion}>next</button>
+    !gameOver &&   <button onClick={nextQuestion} type="button" className="btn btn-light next">next</button>
    }
   
     </div>
